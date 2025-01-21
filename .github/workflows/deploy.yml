@@ -28,4 +28,4 @@ jobs:
         CDK_STACK_NAME: ${{ secrets.CDK_STACKNAME }}
         CDK_DEPLOY_REGION: 'af-south-1'
       run: |
-        npx cdk deploy CDK_STACK_NAME --require-approval=never
+        npx cdk deploy --require-approval=never
