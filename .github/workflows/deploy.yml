@@ -1,0 +1,31 @@
+name: CDK Deployment
+
+on:
+    push:
+      branches: [ "main" ]
+    pull_request:
+      branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Install dependencies
+    - name: Install Node.js and dependencies
+      run: |
+        npm install -g aws-cdk
+        npm install
+
+    # Deploy CDK Stack
+    - name: Deploy CDK Stack
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        CDK_STACK_NAME: ${{ secrets.CDK_STACKNAME }}
+        CDK_DEPLOY_REGION: 'af-south-1'
+      run: |
+        npx cdk deploy CDK_STACK_NAME --require-approval=never

@@ -7,8 +7,8 @@ const app = new cdk.App();
 new S3AndLambdaStack(app, 'S3AndLambdaStack-dev', {
   stackName: 'grad-s3-and-lambda',
   env: { 
-    account: process.env.CDK_DEPLOY_ACCOUNT, 
-    region: process.env.CDK_DEPLOY_REGION || process.env.CDK_DEFAULT_REGION 
+    // account: process.env.CDK_DEPLOY_ACCOUNT, 
+    region: process.env.CDK_DEPLOY_REGION
   },
   tags: {
     Name: "Grad-s3-and-lambda",
