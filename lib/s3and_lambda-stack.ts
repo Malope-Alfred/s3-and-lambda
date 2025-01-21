@@ -38,7 +38,7 @@ export class S3AndLambdaStack extends Stack {
       resources: ['*'],
     }));
   
-    const bucketName = `alfred-s3-${props.envSuffix}`;
+    const bucketName = `alfred-bbd-grad-2025-s3-${props.envSuffix}`;
 
     new s3.Bucket(this, bucketName,{
       bucketName: bucketName,
